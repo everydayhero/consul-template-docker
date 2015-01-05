@@ -1,7 +1,6 @@
-# Consul-template
-> As a container...
+# Consul-template (as a container...)
 
-See (https://github.com/hashicorp/consul-template)[https://github.com/hashicorp/consul-template].
+See [https://github.com/hashicorp/consul-template](https://github.com/hashicorp/consul-template).
 
 ### Notes
 
