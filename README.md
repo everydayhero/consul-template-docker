@@ -4,6 +4,13 @@ See [https://github.com/hashicorp/consul-template](https://github.com/hashicorp/
 
 ### Notes
 
-- This image is intended to be used as a base, and during development.
-- In production, you'll want to build a "release" image, which bakes-in templates.
-- https://github.com/progrium/busybox/issues/11 prevents us from fetching and unzipping the above, so the binary is included.
+```
+docker run \
+ --name consul-template \
+ -v /path/to/your/docker:/bin/docker \
+ -v /var/run/docker.sock:/var/run/docker.sock \
+ -v /path/to/templates:/consul-template \
+ everydayhero/consul-template \
+ /usr/local/bin/consul-template \
+ -config /consul-template/config.d/consul-template.conf
+```

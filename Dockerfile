@@ -1,7 +1,13 @@
-FROM progrium/busybox
-RUN opkg-install bash
+FROM gliderlabs/alpine:3.1
 
-ENV CONSUL_TEMPLATE_RELEASE https://github.com/hashicorp/consul-template/releases/download/v0.5.1/consul-template_0.5.1_linux_amd64.tar.gz
-ADD bin/consul-template /bin/consul-template
+ENV CONSUL_TEMPLATE_VERSION 0.10.0
 
-CMD ["/bin/consul-template","-config=/config"]
+ADD https://github.com/hashicorp/consul-template/releases/download/v${CONSUL_TEMPLATE_VERSION}/consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64.tar.gz /
+
+RUN tar zxvf consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64.tar.gz && \
+    mv consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64/consul-template /bin/consul-template && \
+    rm -rf /consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64.tar.gz && \
+    rm -rf /consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64 && \
+    mkdir -p /consul-template /consul-template/config.d /consul-template/templates
+
+CMD ["/bin/consul-template"]
