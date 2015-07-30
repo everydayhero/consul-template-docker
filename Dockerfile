@@ -1,7 +1,6 @@
 FROM gliderlabs/alpine:3.1
 
 ENV CONSUL_TEMPLATE_VERSION 0.10.0
-ENV DOCKER_HOST unix:///tmp/docker.sock
 
 ADD https://github.com/hashicorp/consul-template/releases/download/v${CONSUL_TEMPLATE_VERSION}/consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64.tar.gz /
 
