@@ -11,7 +11,4 @@ RUN tar zxvf consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64.tar.gz && \
     rm -rf /consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64 && \
     mkdir -p /consul-template /consul-template/config.d /consul-template/templates
 
-ADD https://get.docker.com/builds/Linux/x86_64/docker-latest /bin/docker
-RUN chmod +x /bin/docker
-
 CMD ["/bin/consul-template"]
